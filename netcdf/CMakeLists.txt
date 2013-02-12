@@ -65,6 +65,7 @@ if (NOT NETCDF_FOUND OR NETCDF_FORCE_BUILD)
       BUILD_IN_SOURCE 1
       CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --disable-doxygen --disable-f77
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
+      TEST_BEFORE_INSTALL 1
       )
 
   else (NETCDF_FROM_REPOS)
@@ -77,6 +78,7 @@ if (NOT NETCDF_FOUND OR NETCDF_FORCE_BUILD)
       BUILD_IN_SOURCE 1
       CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --disable-doxygen --disable-f77
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
+      TEST_BEFORE_INSTALL 1
       )
 
   endif (NETCDF_FROM_REPOS)
