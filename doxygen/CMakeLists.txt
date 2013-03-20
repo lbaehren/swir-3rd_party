@@ -62,12 +62,14 @@ if (DOXYGEN_EXECUTABLE)
 
   set (DOXYGEN_VERSION_STRING "${DOXYGEN_VERSION_MAJOR}${DOXYGEN_VERSION_MINOR}${DOXYGEN_VERSION_PATCH}")
 
-  if (${DOXYGEN_VERSION_STRING} LESS ${REQUIRED_VERSION_DOXYGEN})
-    set (DOXYGEN_FOUND FALSE)
-    message (STATUS "Checking whether Doxygen version is ok - no")
-  else ()
-    message (STATUS "Checking whether Doxygen version is ok - yes")
-  endif()
+  if (REQUIRED_VERSION_DOXYGEN)
+    if (${DOXYGEN_VERSION_STRING} LESS ${REQUIRED_VERSION_DOXYGEN})
+      set (DOXYGEN_FOUND FALSE)
+      message (STATUS "Checking whether Doxygen version is ok - no")
+    else ()
+      message (STATUS "Checking whether Doxygen version is ok - yes")
+    endif()
+  endif (REQUIRED_VERSION_DOXYGEN)
 
 endif (DOXYGEN_EXECUTABLE)
 
