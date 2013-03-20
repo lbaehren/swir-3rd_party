@@ -5,7 +5,7 @@
 ##
 ## ==============================================================================
 
-set (NETCDF_SOURCE_VERSION "4.0" )
+set (NETCDF_SOURCE_VERSION "4.2.1.1" )
 set (NETCDF_SOURCE_ARCHIVE "netcdf-${NETCDF_SOURCE_VERSION}.tar.gz" )
 set (NETCDF_URL            "http://www.unidata.ucar.edu/downloads/netcdf/ftp/${NETCDF_SOURCE_ARCHIVE}" )
 set (NETCDF_SVN            "" )
