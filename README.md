@@ -1,5 +1,12 @@
 # SWIR calibration software 3rd-party components #
 
+As it turns out some of the external package dependencies for the SWIR
+calibration software cannot be resolved through the package manager on
+the given platform, such that 3rd-party components need to be installed
+by hand. In order to simplify this process and provide better control
+over the outcome, this package offers a mechanism to retrieve, configure,
+build and install these external dependencies.
+
 ## Checking out a working copy ##
 
 In order to retrieve a working copy or clone into a local bare Git repository:
