@@ -12,8 +12,8 @@ build and install these external dependencies.
 In order to retrieve a working copy or clone into a local bare Git repository:
 
 ~~~~
-  git clone git@github.com:lbaehren/swir-3rd_party.git [local name]
-  git clone --bare git@github.com:lbaehren/swir-3rd_party.git [local name]
+  git clone git@github.com:Tropomi/swir-3rd_party.git [local name]
+  git clone --bare git@github.com:Tropomi/swir-3rd_party.git [local name]
 ~~~~
 
 ## Organization of files and directories ##
