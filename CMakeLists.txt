@@ -6,12 +6,22 @@
 ## ==============================================================================
 
 if (NOT PROJECT_NAME)
+
   ## Name of the project handled by CMake
   project (SWIR-3rd_party)
+
   ## Minimum required version of CMake to configure the project
   cmake_minimum_required (VERSION 2.8.3)
+
   ## Enforced CMake policy
   cmake_policy (VERSION 2.8.3)
+
+  ## Project version
+  set (PROJECT_VERSION_MAJOR 0)
+  set (PROJECT_VERSION_MINOR 1)
+  set (PROJECT_VERSION_PATCH 0)
+  set (PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}")
+
 endif (NOT PROJECT_NAME)
 
 ## CMake modules
