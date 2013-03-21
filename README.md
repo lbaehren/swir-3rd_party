@@ -23,11 +23,14 @@ structure:
 
     .
     |-- CMakeLists.txt        ...  Top-level CMake configuration script
-    |-- cfitsio
-    |-- doxygen
-    |--  hdf5
-    |-- libconfig
-    `-- netcdf
+    |-- README.md             ...  This README file
+    `-- packages
+        |-- cfitsio
+        |-- doxygen
+        |--  hdf5
+        |-- libconfig
+        |-- netcdf
+        `-- zlib
 
 ## Dependencies ##
 
