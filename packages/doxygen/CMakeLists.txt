@@ -25,14 +25,6 @@ option (DOXYGEN_FROM_REPOS     "Install package from repository?"         NO )
 ##
 ## ==============================================================================
 
-## Check if Doxygen is available
-
-if (NOT DOXYGEN_EXECUTABLE)
-  find_package (Doxygen)
-endif (NOT DOXYGEN_EXECUTABLE)
-
-## Check if Doxygen is available in a recent enough version
-
 ## Extract Doxygen version number - this is not done by the standard module
 if (DOXYGEN_EXECUTABLE)
 

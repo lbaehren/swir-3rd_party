@@ -24,6 +24,9 @@ if (NOT PROJECT_NAME)
 
 endif (NOT PROJECT_NAME)
 
+## Extra location for custom CMake modules
+list (INSERT CMAKE_MODULE_PATH 0 "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
 ## CMake modules
 include (ExternalProject)
 

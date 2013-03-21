@@ -54,14 +54,6 @@ endif (HDF5_ENABLE_TESTING)
 
 ## ==============================================================================
 ##
-##  System inspection
-##
-## ==============================================================================
-
-find_package (HDF5)
-
-## ==============================================================================
-##
 ##  Build instructions
 ##
 ## ==============================================================================
@@ -78,6 +70,14 @@ if (NOT HDF5_FOUND OR HDF5_FORCE_BUILD)
     set (HDF5_SOURCE ${HDF5_URL})
   endif (NOT HDF5_SOURCE)
 
+  ## Configuration
+
+  if (ZLIB_FOUND)
+    set (HDF5_ZLIB_SUPPORT "--with-zlib=${ZLIB_INCLUDES}")
+  else (ZLIB_FOUND)
+    set (HDF5_ZLIB_SUPPORT "")
+  endif (ZLIB_FOUND)
+
   ## Build package from source
 
   if (HDF5_FROM_REPOS)
@@ -88,7 +88,7 @@ if (NOT HDF5_FOUND OR HDF5_FORCE_BUILD)
       SOURCE_DIR source
       SVN_REPOSITORY ${HDF5_SVN}
       BUILD_IN_SOURCE 1
-      CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --enable-cxx
+      CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure ${HDF5_ZLIB_SUPPORT} --prefix=${CMAKE_INSTALL_PREFIX} --enable-cxx
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
 
@@ -100,7 +100,7 @@ if (NOT HDF5_FOUND OR HDF5_FORCE_BUILD)
       SOURCE_DIR source
       URL ${HDF5_SOURCE}
       BUILD_IN_SOURCE 1
-      CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure --prefix=${CMAKE_INSTALL_PREFIX} --enable-cxx
+      CONFIGURE_COMMAND ${CMAKE_CURRENT_BINARY_DIR}/source/configure ${HDF5_ZLIB_SUPPORT} --prefix=${CMAKE_INSTALL_PREFIX} --enable-cxx
       INSTALL_COMMAND ${PORT_INSTALL_COMMAND} make install
       )
 
