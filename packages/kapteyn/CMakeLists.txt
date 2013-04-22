@@ -30,10 +30,10 @@
 ##
 ## =============================================================================
 
-set (H5PY_SOURCE_VERSION "2.1.1" )
-set (H5PY_SOURCE_ARCHIVE "h5py-${H5PY_SOURCE_VERSION}.tar.gz" )
-set (H5PY_URL            "http://h5py.googlecode.com/files/${H5PY_SOURCE_ARCHIVE}" )
-set (H5PY_GIT            "git://github.com/h5py/h5py.git" )
+set (KAPTEYN_SOURCE_VERSION "2.2" )
+set (KAPTEYN_SOURCE_ARCHIVE "kapteyn-${KAPTEYN_SOURCE_VERSION}.tar.gz" )
+set (KAPTEYN_URL            "http://www.astro.rug.nl/software/kapteyn/${KAPTEYN_SOURCE_ARCHIVE}" )
+set (KAPTEYN_SVN            "" )
 
 ## =============================================================================
 ##
@@ -41,16 +41,16 @@ set (H5PY_GIT            "git://github.com/h5py/h5py.git" )
 ##
 ## =============================================================================
 
-option (H5PY_FORCE_BUILD    "Force build and installation of package?" NO )
-option (H5PY_FROM_REPOS     "Install package from repository?"         NO )
-option (H5PY_ENABLE_TESTING "Enable testing and experimental builds?"  YES )
+option (KAPTEYN_FORCE_BUILD    "Force build and installation of package?" NO )
+option (KAPTEYN_FROM_REPOS     "Install package from repository?"         NO )
+option (KAPTEYN_ENABLE_TESTING "Enable testing and experimental builds?"  YES )
 
 ## Handle options
 
-if (H5PY_ENABLE_TESTING)
+if (KAPTEYN_ENABLE_TESTING)
   include (CTest)
   enable_testing()
-endif (H5PY_ENABLE_TESTING)
+endif (KAPTEYN_ENABLE_TESTING)
 
 ## =============================================================================
 ##
@@ -58,60 +58,59 @@ endif (H5PY_ENABLE_TESTING)
 ##
 ## =============================================================================
 
-
 ## =============================================================================
 ##
 ##  Build instructions
 ##
 ## =============================================================================
 
-if (NOT H5PY_FOUND OR H5PY_FORCE_BUILD)
+if (NOT KAPTEYN_FOUND OR KAPTEYN_FORCE_BUILD)
 
   ## Locate source file to build from
 
-  find_file (H5PY_SOURCE ${H5PY_SOURCE_ARCHIVE}
+  find_file (KAPTEYN_SOURCE ${KAPTEYN_SOURCE_ARCHIVE}
     PATHS ${CMAKE_CURRENT_SOURCE_DIR}
     )
 
-  if (NOT H5PY_SOURCE)
-    set (H5PY_SOURCE ${H5PY_URL})
-  endif (NOT H5PY_SOURCE)
+  if (NOT KAPTEYN_SOURCE)
+    set (KAPTEYN_SOURCE ${KAPTEYN_URL})
+  endif (NOT KAPTEYN_SOURCE)
 
   ## Build package from source
 
-  if (H5PY_FROM_REPOS)
+  if (KAPTEYN_FROM_REPOS)
 
-    ExternalProject_Add (h5py
+    ExternalProject_Add (kapteyn
       PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_DIR download
       SOURCE_DIR source
-      GIT_REPOSITORY ${H5PY_GIT}
+      SVN_REPOSITORY ${KAPTEYN_SVN}
       BUILD_IN_SOURCE 1
       CONFIGURE_COMMAND ""
       BUILD_COMMAND ""
       INSTALL_COMMAND ${PYTHON_EXECUTABLE} setup.py install --prefix=${CMAKE_INSTALL_PREFIX}
       )
 
-  else (H5PY_FROM_REPOS)
+  else (KAPTEYN_FROM_REPOS)
 
-    ExternalProject_Add (h5py
+    ExternalProject_Add (kapteyn
       PREFIX ${CMAKE_CURRENT_BINARY_DIR}
       DOWNLOAD_DIR download
       SOURCE_DIR source
-      URL ${H5PY_SOURCE}
+      URL ${KAPTEYN_SOURCE}
       BUILD_IN_SOURCE 1
       CONFIGURE_COMMAND ""
       BUILD_COMMAND ""
       INSTALL_COMMAND ${PYTHON_EXECUTABLE} setup.py install --prefix=${CMAKE_INSTALL_PREFIX}
       )
 
-  endif (H5PY_FROM_REPOS)
+  endif (KAPTEYN_FROM_REPOS)
 
-else (NOT H5PY_FOUND OR H5PY_FORCE_BUILD)
+else (NOT KAPTEYN_FOUND OR KAPTEYN_FORCE_BUILD)
 
-  add_custom_target (h5py
+  add_custom_target (kapteyn
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    COMMENT "[h5py] Found system-wide installation; skipping rebuild!"
+    COMMENT "[kapteyn] Found system-wide installation; skipping rebuild!"
     )
 
-endif (NOT H5PY_FOUND OR H5PY_FORCE_BUILD)
+endif (NOT KAPTEYN_FOUND OR KAPTEYN_FORCE_BUILD)
