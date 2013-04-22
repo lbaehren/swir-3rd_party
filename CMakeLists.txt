@@ -30,6 +30,22 @@ list (INSERT CMAKE_MODULE_PATH 0 "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 ## CMake modules
 include (ExternalProject)
 
+## =============================================================================
+##
+##  Configuration options
+##
+## =============================================================================
+
+##__________________________________________________________
+## Installation prefix
+
+if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+
+  set (CMAKE_INSTALL_PREFIX
+    "${PROJECT_SOURCE_DIR}/release" CACHE PATH "Installation location prefix" FORCE
+    )
+endif (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+
 ## ==============================================================================
 ##
 ##  Project sub-directories
